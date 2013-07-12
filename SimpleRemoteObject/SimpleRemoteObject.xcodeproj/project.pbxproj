@@ -35,8 +35,8 @@
 		53BB4657176B0479009396CB /* NoResultKeyErrorCheckObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BB4656176B0479009396CB /* NoResultKeyErrorCheckObj.m */; };
 		5DC58B96178ED89C009CD97C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC58B95178ED89C009CD97C /* CoreGraphics.framework */; };
 		5DC58B98178ED966009CD97C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC58B97178ED966009CD97C /* Security.framework */; };
-		5DC58B9D178EE980009CD97C /* RESTTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC58B9C178EE980009CD97C /* RESTTag.m */; };
-		5DC58BA0178EECE2009CD97C /* SRSimpleRESTRemoteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC58B9F178EECE2009CD97C /* SRSimpleRESTRemoteObject.m */; };
+		5DC58BA317900AE8009CD97C /* SRSimpleRESTRemoteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC58BA217900AE8009CD97C /* SRSimpleRESTRemoteObject.m */; };
+		5DC58BA617900AFB009CD97C /* RESTTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC58BA517900AFB009CD97C /* RESTTag.m */; };
 		DB9018F3AED349E3BFFA66BD /* libPods-SimpleRemoteObjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B864C704D844448510F48E /* libPods-SimpleRemoteObjectTests.a */; };
 		ED640E208F8A49C0BFAF0A62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1126892D7EB748BABDA1C36E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -113,10 +113,10 @@
 		53BB4656176B0479009396CB /* NoResultKeyErrorCheckObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoResultKeyErrorCheckObj.m; path = classes/NoResultKeyErrorCheckObj.m; sourceTree = "<group>"; };
 		5DC58B95178ED89C009CD97C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5DC58B97178ED966009CD97C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		5DC58B9B178EE980009CD97C /* RESTTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTTag.h; sourceTree = "<group>"; };
-		5DC58B9C178EE980009CD97C /* RESTTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTTag.m; sourceTree = "<group>"; };
-		5DC58B9E178EECE2009CD97C /* SRSimpleRESTRemoteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSimpleRESTRemoteObject.h; sourceTree = SOURCE_ROOT; };
-		5DC58B9F178EECE2009CD97C /* SRSimpleRESTRemoteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSimpleRESTRemoteObject.m; sourceTree = SOURCE_ROOT; };
+		5DC58BA117900AE8009CD97C /* SRSimpleRESTRemoteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRSimpleRESTRemoteObject.h; path = Classes/SRSimpleRESTRemoteObject.h; sourceTree = SOURCE_ROOT; };
+		5DC58BA217900AE8009CD97C /* SRSimpleRESTRemoteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRSimpleRESTRemoteObject.m; path = Classes/SRSimpleRESTRemoteObject.m; sourceTree = SOURCE_ROOT; };
+		5DC58BA417900AFB009CD97C /* RESTTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RESTTag.h; path = classes/RESTTag.h; sourceTree = "<group>"; };
+		5DC58BA517900AFB009CD97C /* RESTTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RESTTag.m; path = classes/RESTTag.m; sourceTree = "<group>"; };
 		BC9E2480BB574A91A00BFAF1 /* Pods-SimpleRemoteObjectTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleRemoteObjectTests.xcconfig"; path = "Pods/Pods-SimpleRemoteObjectTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -189,14 +189,14 @@
 		2B29FBE316F0126000FE1940 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5DC58BA117900AE8009CD97C /* SRSimpleRESTRemoteObject.h */,
+				5DC58BA217900AE8009CD97C /* SRSimpleRESTRemoteObject.m */,
 				2B29FC1516F0173400FE1940 /* SRSimpleRemoteObject.h */,
 				2B29FC1616F0173400FE1940 /* SRSimpleRemoteObject.m */,
 				2B29FBE616F0126000FE1940 /* SRRemoteConfig.h */,
 				2B29FBE816F0126000FE1940 /* SRRemoteConfig.m */,
 				2B29FC1016F0164C00FE1940 /* utilities */,
 				2B29FBE416F0126000FE1940 /* Supporting Files */,
-				5DC58B9E178EECE2009CD97C /* SRSimpleRESTRemoteObject.h */,
-				5DC58B9F178EECE2009CD97C /* SRSimpleRESTRemoteObject.m */,
 			);
 			name = Classes;
 			path = SimpleRemoteObject;
@@ -232,10 +232,10 @@
 		2B29FC0916F0154100FE1940 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				5DC58BA417900AFB009CD97C /* RESTTag.h */,
+				5DC58BA517900AFB009CD97C /* RESTTag.m */,
 				2B29FC0A16F0158A00FE1940 /* Tag.h */,
 				2B29FC0B16F0158A00FE1940 /* Tag.m */,
-				5DC58B9B178EE980009CD97C /* RESTTag.h */,
-				5DC58B9C178EE980009CD97C /* RESTTag.m */,
 				2B29FC0C16F0158A00FE1940 /* User.h */,
 				2B29FC0D16F0158A00FE1940 /* User.m */,
 				2BF1ED4016F04CA1002F7EE8 /* Echo.h */,
@@ -404,6 +404,7 @@
 				2B29FBE916F0126000FE1940 /* SRRemoteConfig.m in Sources */,
 				2B29FC1416F0166A00FE1940 /* NSObject+SRPropertyUtil.m in Sources */,
 				2B29FC1716F0173400FE1940 /* SRSimpleRemoteObject.m in Sources */,
+				5DC58BA317900AE8009CD97C /* SRSimpleRESTRemoteObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,8 +426,7 @@
 				2BE7758F16F881A400A179F4 /* TimeoutObj.m in Sources */,
 				53BB4654176B0191009396CB /* ErrorObj.m in Sources */,
 				53BB4657176B0479009396CB /* NoResultKeyErrorCheckObj.m in Sources */,
-				5DC58B9D178EE980009CD97C /* RESTTag.m in Sources */,
-				5DC58BA0178EECE2009CD97C /* SRSimpleRESTRemoteObject.m in Sources */,
+				5DC58BA617900AFB009CD97C /* RESTTag.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
