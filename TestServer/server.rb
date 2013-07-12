@@ -32,6 +32,16 @@ server.mount_proc("/") { |req, res|
   res["Content-Type"] = content_type
 }
 
+# REST GET
+server.mount_proc("/tags/1.json") { |req, res|
+  path = File.join(docroot, 'tag_1.json')
+  res.body = File.open(path){|file|
+    file.binmode # バイナリモードでのオープン
+    file.read
+  }
+  res["Content-Type"] = "application/json; charset=UTF-8"
+}
+
 server.mount_proc("/longtime") { |req, res|
   res.body = '{"result":"ok"}'
   sleep(5)

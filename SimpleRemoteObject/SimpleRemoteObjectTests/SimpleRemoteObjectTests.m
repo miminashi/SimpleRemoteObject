@@ -10,6 +10,7 @@
 #import "NonArrayObject.h"
 #import "NonArrayRootObject.h"
 #import "Tag.h"
+#import "RESTTag.h"
 #import "Echo.h"
 #import "Schedule.h"
 #import "Activity.h"
@@ -59,6 +60,45 @@ describe(@"SimpleRemoteObject", ^{
             [[expectFutureValue(((Tag *)[ret objectAtIndex:0]).resource_uri) shouldEventually] equal:@"/api/tag/%E3%82%AB%E3%83%95%E3%82%A7"];
             [[expectFutureValue(((Tag *)[ret objectAtIndex:0]).slug) shouldEventually] equal:@"カフェ"];
             [[expectFutureValue(((Tag *)[ret objectAtIndex:0]).remoteId) shouldEventually] equal:theValue(2)];
+        });
+    });
+});
+
+describe(@"SimpleRemoteObject", ^{
+    context(@"read remote tag object with REST URL", ^{
+        beforeAll(^{
+            [SRRemoteConfig defaultConfig].baseurl = @"http://localhost:2000/";
+        });
+        
+        it(@"should read one remote object", ^{
+            __block RESTTag *ret;
+            [RESTTag remoteObjectWithID:@1 async:^(id object, NSError *error) {
+                ret = object;
+            }];
+            [[expectFutureValue(ret) shouldEventually] beNonNil];
+            [[expectFutureValue(ret.remoteId) shouldEventually] equal:@1];
+            [[expectFutureValue(ret.name) shouldEventually] equal:@"ハッカソン"];
+            [[expectFutureValue(ret.resource_uri) shouldEventually] equal:@"/api/tag/%E3%83%8F%E3%83%83%E3%82%AB%E3%82%BD%E3%83%B3"];
+        });
+        
+        it(@"should read many remote objects", ^{
+            __block NSArray *ret;
+            [RESTTag remoteObjectsAsync:^(NSArray *allRemote, NSError *error) {
+                if(error) {
+                    NSLog(@"error: %@", error.localizedDescription);
+                }
+                ret = allRemote;
+                NSLog(@"%@", ret);
+            }];
+
+            [[expectFutureValue(ret) shouldEventually] beNonNil];
+            [[expectFutureValue(ret) shouldEventually] haveCountOf:3];
+            [[expectFutureValue(((RESTTag *)[ret objectAtIndex:0]).name) shouldEventually] equal:@"カフェ"];
+            [[expectFutureValue(((RESTTag *)[ret objectAtIndex:1]).name) shouldEventually] equal:@"ハッカソン"];
+            [[expectFutureValue(((RESTTag *)[ret objectAtIndex:2]).name) shouldEventually] equal:@"破滅"];
+            [[expectFutureValue(((RESTTag *)[ret objectAtIndex:0]).resource_uri) shouldEventually] equal:@"/api/tag/%E3%82%AB%E3%83%95%E3%82%A7"];
+            [[expectFutureValue(((RESTTag *)[ret objectAtIndex:0]).slug) shouldEventually] equal:@"カフェ"];
+            [[expectFutureValue(((RESTTag *)[ret objectAtIndex:0]).remoteId) shouldEventually] equal:theValue(2)];
         });
     });
 });
