@@ -64,8 +64,17 @@
 }
 +(void)fetchURL:(NSString *)strurl async:(SRFetchCompletionBlock)completionBlock{
     NSURL *url = [NSURL URLWithString:strurl];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:[SRRemoteConfig defaultConfig].timeout];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [client setDefaultHeader:@"Accept" value:@"application/json"];
+    if ([SRRemoteConfig defaultConfig].appUsername && [SRRemoteConfig defaultConfig].appPassword) {
+        [client setAuthorizationHeaderWithUsername:[SRRemoteConfig defaultConfig].appUsername password:[SRRemoteConfig defaultConfig].appPassword];
+    }
+    NSMutableURLRequest *request = [client requestWithMethod:@"get" path:@"" parameters:nil];
+    [request setTimeoutInterval:[SRRemoteConfig defaultConfig].timeout];
+
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"fetchURL JSON class: %@", [JSON class]);
         NSArray *ret = [[self class] performSelector:@selector(operationSuccess:) withObject:JSON];
         NSError *error = [[self class] performSelector:@selector(parseError:) withObject:JSON];
         completionBlock(ret,error);
@@ -80,6 +89,9 @@
     AFHTTPClient * client = [[AFHTTPClient alloc] initWithBaseURL:url];
     [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [client setDefaultHeader:@"Accept" value:@"application/json"];
+    if ([SRRemoteConfig defaultConfig].appUsername && [SRRemoteConfig defaultConfig].appPassword) {
+        [client setAuthorizationHeaderWithUsername:[SRRemoteConfig defaultConfig].appUsername password:[SRRemoteConfig defaultConfig].appPassword];
+    }
 
     [client postPath:strurl
           parameters:params

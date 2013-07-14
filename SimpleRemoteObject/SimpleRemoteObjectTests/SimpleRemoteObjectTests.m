@@ -11,11 +11,13 @@
 #import "NonArrayRootObject.h"
 #import "Tag.h"
 #import "RESTTag.h"
+#import "PrivateTag.h"
 #import "Echo.h"
 #import "Schedule.h"
 #import "Activity.h"
 #import "Post.h"
 #import "PostObj.h"
+#import "PrivatePostObj.h"
 #import "TimeoutObj.h"
 #import "ErrorObj.h"
 #import "NoResultKeyErrorCheckObj.h"
@@ -63,6 +65,51 @@ describe(@"SimpleRemoteObject", ^{
         });
     });
 });
+
+describe(@"SimpleRemoteObject", ^{
+    context(@"read remote tag object with basic auth", ^{
+        beforeAll(^{
+            [SRRemoteConfig defaultConfig].baseurl = @"http://localhost:2000/";
+            [SRRemoteConfig defaultConfig].appUsername = @"oquno";
+            [SRRemoteConfig defaultConfig].appPassword = @"dankogai";
+        });
+        
+        it(@"should read remote json", ^{
+            __block NSArray *ret;
+            [PrivateTag fetchAsync:^(NSArray *allRemote, NSError *error) {
+                ret = allRemote;
+            }];
+            [[expectFutureValue(ret) shouldEventually] beNonNil];
+            [[expectFutureValue(ret) shouldEventually] haveCountOf:3];
+            [[expectFutureValue(((PrivateTag *)[ret objectAtIndex:0]).name) shouldEventually] equal:@"oquno"];
+            [[expectFutureValue(((PrivateTag *)[ret objectAtIndex:1]).name) shouldEventually] equal:@"オクノ"];
+            [[expectFutureValue(((PrivateTag *)[ret objectAtIndex:2]).name) shouldEventually] equal:@"破滅"];
+            [[expectFutureValue(((PrivateTag *)[ret objectAtIndex:0]).resource_uri) shouldEventually] equal:@"/api/tag/%E3%82%AB%E3%83%95%E3%82%A7"];
+            [[expectFutureValue(((PrivateTag *)[ret objectAtIndex:0]).slug) shouldEventually] equal:@"カフェ"];
+            [[expectFutureValue(((PrivateTag *)[ret objectAtIndex:0]).remoteId) shouldEventually] equal:theValue(5)];
+        });
+    });
+    
+    context(@"read remote tag object with basic auth (wrong username and password)", ^{
+        beforeAll(^{
+            [SRRemoteConfig defaultConfig].baseurl = @"http://localhost:2000/";
+            [SRRemoteConfig defaultConfig].appUsername = @"ssig33";
+            [SRRemoteConfig defaultConfig].appPassword = @"ushijima1129";
+        });
+        
+        it(@"should not read remote json", ^{
+            __block NSArray *ret;
+            __block NSError *retError;
+            [PrivateTag fetchAsync:^(NSArray *allRemote, NSError *error) {
+                ret = allRemote;
+                retError = error;
+            }];
+            [[expectFutureValue(ret) shouldEventually] beNil];
+            [[expectFutureValue(retError) shouldEventually] beNonNil];
+        });
+    });
+});
+
 
 describe(@"SimpleRemoteObject", ^{
     context(@"read remote tag object with REST URL", ^{
@@ -240,6 +287,46 @@ describe(@"SimpleRemoteObject", ^{
             [[expectFutureValue(ret) shouldEventually] beNonNil];
             [[expectFutureValue(ret) shouldEventually] haveCountOf:1];
             [[expectFutureValue(((PostObj *)[ret objectAtIndex:0]).key) shouldEventually] equal:@"value"];
+        });
+    });
+});
+
+describe(@"SimpleRemoteObject", ^{
+    context(@"read remote post object using POST with Basic Auth", ^{
+        beforeAll(^{
+            [SRRemoteConfig defaultConfig].baseurl = @"http://localhost:2000/";
+            [SRRemoteConfig defaultConfig].appUsername = @"oquno";
+            [SRRemoteConfig defaultConfig].appPassword = @"dankogai";
+        });
+        
+        it(@"should get object using POST method", ^{
+            NSDictionary *params = @{@"key":@"value"};
+            __block NSArray *ret;
+            [PrivatePostObj postAsyncWithParams:params async:^(NSArray *allRemote, NSError *error){
+                ret = allRemote;
+            }];
+            [[expectFutureValue(ret) shouldEventually] beNonNil];
+            [[expectFutureValue(ret) shouldEventually] haveCountOf:1];
+            [[expectFutureValue(((PrivatePostObj *)[ret objectAtIndex:0]).key) shouldEventually] equal:@"value"];
+        });
+    });
+    context(@"read remote post object using POST with Basic Auth (wrong username and password)", ^{
+        beforeAll(^{
+            [SRRemoteConfig defaultConfig].baseurl = @"http://localhost:2000/";
+            [SRRemoteConfig defaultConfig].appUsername = @"ssig33";
+            [SRRemoteConfig defaultConfig].appPassword = @"ushijima1129";
+        });
+        
+        it(@"should fail", ^{
+            NSDictionary *params = @{@"key":@"value"};
+            __block NSArray *ret;
+            __block NSError *retError;
+            [PrivatePostObj postAsyncWithParams:params async:^(NSArray *allRemote, NSError *error){
+                ret = allRemote;
+                retError = error;
+            }];
+            [[expectFutureValue(ret) shouldEventually] beNil];
+            [[expectFutureValue(retError) shouldEventually] beNonNil];
         });
     });
 });
