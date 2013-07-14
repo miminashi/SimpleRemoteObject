@@ -21,3 +21,6 @@ vendor
 #CocoaPod
 NSRemoteJsonObject/Pods/*
 SimpleRemoteObject/Pods/*
+
+# TestServer
+dot.htpasswd

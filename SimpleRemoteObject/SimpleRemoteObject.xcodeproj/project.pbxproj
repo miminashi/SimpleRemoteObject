@@ -37,6 +37,8 @@
 		5DC58B98178ED966009CD97C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC58B97178ED966009CD97C /* Security.framework */; };
 		5DC58BA317900AE8009CD97C /* SRSimpleRESTRemoteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC58BA217900AE8009CD97C /* SRSimpleRESTRemoteObject.m */; };
 		5DC58BA617900AFB009CD97C /* RESTTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC58BA517900AFB009CD97C /* RESTTag.m */; };
+		5DC58BA91792EA3C009CD97C /* PrivateTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC58BA81792EA3C009CD97C /* PrivateTag.m */; };
+		5DC58BAC17932E81009CD97C /* PrivatePostObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC58BAB17932E81009CD97C /* PrivatePostObj.m */; };
 		DB9018F3AED349E3BFFA66BD /* libPods-SimpleRemoteObjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B864C704D844448510F48E /* libPods-SimpleRemoteObjectTests.a */; };
 		ED640E208F8A49C0BFAF0A62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1126892D7EB748BABDA1C36E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -117,6 +119,10 @@
 		5DC58BA217900AE8009CD97C /* SRSimpleRESTRemoteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRSimpleRESTRemoteObject.m; path = Classes/SRSimpleRESTRemoteObject.m; sourceTree = SOURCE_ROOT; };
 		5DC58BA417900AFB009CD97C /* RESTTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RESTTag.h; path = classes/RESTTag.h; sourceTree = "<group>"; };
 		5DC58BA517900AFB009CD97C /* RESTTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RESTTag.m; path = classes/RESTTag.m; sourceTree = "<group>"; };
+		5DC58BA71792EA3C009CD97C /* PrivateTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrivateTag.h; path = classes/PrivateTag.h; sourceTree = "<group>"; };
+		5DC58BA81792EA3C009CD97C /* PrivateTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrivateTag.m; path = classes/PrivateTag.m; sourceTree = "<group>"; };
+		5DC58BAA17932E81009CD97C /* PrivatePostObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrivatePostObj.h; path = classes/PrivatePostObj.h; sourceTree = "<group>"; };
+		5DC58BAB17932E81009CD97C /* PrivatePostObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrivatePostObj.m; path = classes/PrivatePostObj.m; sourceTree = "<group>"; };
 		BC9E2480BB574A91A00BFAF1 /* Pods-SimpleRemoteObjectTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleRemoteObjectTests.xcconfig"; path = "Pods/Pods-SimpleRemoteObjectTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -260,6 +266,10 @@
 				53BB4653176B0191009396CB /* ErrorObj.m */,
 				53BB4655176B0479009396CB /* NoResultKeyErrorCheckObj.h */,
 				53BB4656176B0479009396CB /* NoResultKeyErrorCheckObj.m */,
+				5DC58BA71792EA3C009CD97C /* PrivateTag.h */,
+				5DC58BA81792EA3C009CD97C /* PrivateTag.m */,
+				5DC58BAA17932E81009CD97C /* PrivatePostObj.h */,
+				5DC58BAB17932E81009CD97C /* PrivatePostObj.m */,
 			);
 			name = classes;
 			sourceTree = "<group>";
@@ -427,6 +437,8 @@
 				53BB4654176B0191009396CB /* ErrorObj.m in Sources */,
 				53BB4657176B0479009396CB /* NoResultKeyErrorCheckObj.m in Sources */,
 				5DC58BA617900AFB009CD97C /* RESTTag.m in Sources */,
+				5DC58BA91792EA3C009CD97C /* PrivateTag.m in Sources */,
+				5DC58BAC17932E81009CD97C /* PrivatePostObj.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

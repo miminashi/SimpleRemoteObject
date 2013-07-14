@@ -10,6 +10,12 @@ puts "Starting server: http://#{Socket.gethostname}:#{port}"
 docroot = File::dirname($0)
 server = HTTPServer.new(:Port=>port,:DocumentRoot=>docroot )
 
+# prepares BASIC Auth
+realm = "Hello, oquno"
+htpd = HTTPAuth::Htpasswd.new('dot.htpasswd')
+htpd.set_passwd(nil, 'oquno', 'dankogai')
+$authenticator = HTTPAuth::BasicAuth.new(:UserDB => htpd, :Realm => realm)
+
 server.mount_proc("/") { |req, res|
   path = File.join(docroot,*req.path.split("/"))
 
@@ -42,6 +48,16 @@ server.mount_proc("/tags/1.json") { |req, res|
   res["Content-Type"] = "application/json; charset=UTF-8"
 }
 
+server.mount_proc("/private_tags.json") { |req, res|
+  $authenticator.authenticate(req, res)
+  path = File.join(docroot, 'private_tags.json')
+  res.body = File.open(path){|file|
+    file.binmode
+    file.read
+  }
+  res["Content-Type"] = "application/json; charset=UTF-8"
+}
+
 server.mount_proc("/longtime") { |req, res|
   res.body = '{"result":"ok"}'
   sleep(5)
@@ -59,8 +75,17 @@ class PostServlet < WEBrick::HTTPServlet::AbstractServlet
     res["Content-Type"] = "application/json; charset=UTF8"
   end
 end
-
 server.mount("/post", PostServlet)
+
+class BasicAuthPostServlet < WEBrick::HTTPServlet::AbstractServlet
+  def do_POST(req, res)
+    $authenticator.authenticate(req, res)
+    res.body = JSON.generate(req.query)
+    res["Content-Type"] = "application/json; charset=UTF8"
+  end
+end
+server.mount("/private/post", BasicAuthPostServlet)
+
 
 trap("INT"){ server.shutdown }
 server.start
