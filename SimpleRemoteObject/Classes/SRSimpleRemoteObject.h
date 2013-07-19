@@ -49,4 +49,9 @@ typedef void(^SRFetchCompletionBlock)(NSArray *allRemote, NSError *error);
 +(NSError *)parseError:(id)obj;
 
 
+//
+// Please override this method if you want to make mapping between remoteKey and object property
+//
+- (NSString *)propertyForRemoteKey:(NSString *)remoteKey;
+
 @end

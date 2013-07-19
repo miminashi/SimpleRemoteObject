@@ -164,11 +164,16 @@
         self.remoteId = [dict objectForKey:@"id"];
     }
     NSDictionary *props = [[self class] properties];
-    for (NSString *key in [props allKeys]){
-        NSLog(@"key:%@", key);
-        [self parseObject:[dict objectForKey:key] ForKey:key];
+//    for (NSString *key in [props allKeys]){
+//        NSLog(@"key:%@, object:%@", key, [dict objectForKey:key]);
+//        [self parseObject:[dict objectForKey:key] ForKey:key];
+//    }
+    for (NSString *remoteKey in [dict allKeys]) {
+        NSString *propertyName = [self propertyForRemoteKey:remoteKey];
+        if ([[props allKeys] containsObject:propertyName]) {
+            [self parseObject:[dict objectForKey:remoteKey] ForKey:propertyName];
+        }
     }
-    
 }
 
 #pragma mark -
@@ -219,6 +224,13 @@
 +(NSError *)parseError:(id)obj
 {
     return nil;
+}
+
+- (NSString *)propertyForRemoteKey:(NSString *)remoteKey
+{
+    NSString *propertyName;
+    propertyName = remoteKey;
+    return propertyName;
 }
 
 @end

@@ -33,6 +33,7 @@
 		2BFD283316F31F4C0018C1FA /* PostObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD283216F31F4C0018C1FA /* PostObj.m */; };
 		53BB4654176B0191009396CB /* ErrorObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BB4653176B0191009396CB /* ErrorObj.m */; };
 		53BB4657176B0479009396CB /* NoResultKeyErrorCheckObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BB4656176B0479009396CB /* NoResultKeyErrorCheckObj.m */; };
+		5D33A5E817995B3F008F2DB0 /* StrangeNameObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D33A5E717995B3F008F2DB0 /* StrangeNameObj.m */; };
 		5DC58B96178ED89C009CD97C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC58B95178ED89C009CD97C /* CoreGraphics.framework */; };
 		5DC58B98178ED966009CD97C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC58B97178ED966009CD97C /* Security.framework */; };
 		5DC58BA317900AE8009CD97C /* SRSimpleRESTRemoteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC58BA217900AE8009CD97C /* SRSimpleRESTRemoteObject.m */; };
@@ -113,6 +114,8 @@
 		53BB4653176B0191009396CB /* ErrorObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ErrorObj.m; path = classes/ErrorObj.m; sourceTree = "<group>"; };
 		53BB4655176B0479009396CB /* NoResultKeyErrorCheckObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoResultKeyErrorCheckObj.h; path = classes/NoResultKeyErrorCheckObj.h; sourceTree = "<group>"; };
 		53BB4656176B0479009396CB /* NoResultKeyErrorCheckObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoResultKeyErrorCheckObj.m; path = classes/NoResultKeyErrorCheckObj.m; sourceTree = "<group>"; };
+		5D33A5E617995B3F008F2DB0 /* StrangeNameObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StrangeNameObj.h; path = classes/StrangeNameObj.h; sourceTree = "<group>"; };
+		5D33A5E717995B3F008F2DB0 /* StrangeNameObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StrangeNameObj.m; path = classes/StrangeNameObj.m; sourceTree = "<group>"; };
 		5DC58B95178ED89C009CD97C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5DC58B97178ED966009CD97C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5DC58BA117900AE8009CD97C /* SRSimpleRESTRemoteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRSimpleRESTRemoteObject.h; path = Classes/SRSimpleRESTRemoteObject.h; sourceTree = SOURCE_ROOT; };
@@ -270,6 +273,8 @@
 				5DC58BA81792EA3C009CD97C /* PrivateTag.m */,
 				5DC58BAA17932E81009CD97C /* PrivatePostObj.h */,
 				5DC58BAB17932E81009CD97C /* PrivatePostObj.m */,
+				5D33A5E617995B3F008F2DB0 /* StrangeNameObj.h */,
+				5D33A5E717995B3F008F2DB0 /* StrangeNameObj.m */,
 			);
 			name = classes;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 				5DC58BA617900AFB009CD97C /* RESTTag.m in Sources */,
 				5DC58BA91792EA3C009CD97C /* PrivateTag.m in Sources */,
 				5DC58BAC17932E81009CD97C /* PrivatePostObj.m in Sources */,
+				5D33A5E817995B3F008F2DB0 /* StrangeNameObj.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

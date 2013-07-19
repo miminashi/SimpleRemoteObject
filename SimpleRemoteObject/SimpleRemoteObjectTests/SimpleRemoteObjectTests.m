@@ -21,6 +21,7 @@
 #import "TimeoutObj.h"
 #import "ErrorObj.h"
 #import "NoResultKeyErrorCheckObj.h"
+#import "StrangeNameObj.h"
 
 SPEC_BEGIN(RemoteConfig)
 
@@ -62,6 +63,27 @@ describe(@"SimpleRemoteObject", ^{
             [[expectFutureValue(((Tag *)[ret objectAtIndex:0]).resource_uri) shouldEventually] equal:@"/api/tag/%E3%82%AB%E3%83%95%E3%82%A7"];
             [[expectFutureValue(((Tag *)[ret objectAtIndex:0]).slug) shouldEventually] equal:@"カフェ"];
             [[expectFutureValue(((Tag *)[ret objectAtIndex:0]).remoteId) shouldEventually] equal:theValue(2)];
+        });
+    });
+});
+
+describe(@"SimpleRemoteObject", ^{
+    context(@"read remote tag object that json's contains a key 'description' ", ^{
+        beforeAll(^{
+            [SRRemoteConfig defaultConfig].baseurl = @"http://localhost:2000/";
+        });
+        
+        it(@"should read remote json", ^{
+            __block NSArray *ret;
+            [StrangeNameObj fetchAsync:^(NSArray *allRemote, NSError *error) {
+                ret = allRemote;
+            }];
+            [[expectFutureValue(ret) shouldEventually] beNonNil];
+            [[expectFutureValue(ret) shouldEventually] haveCountOf:2];
+            [[expectFutureValue(((StrangeNameObj *)[ret objectAtIndex:0]).subject) shouldEventually] equal:@"家の前にシカがいる"];
+            [[expectFutureValue(((StrangeNameObj *)[ret objectAtIndex:0]).comment) shouldEventually] equal:@"家の前にシカがいる。山に返したほうがいいのでは？"];
+            [[expectFutureValue(((StrangeNameObj *)[ret objectAtIndex:1]).subject) shouldEventually] equal:@"家の中にシカがいる"];
+            [[expectFutureValue(((StrangeNameObj *)[ret objectAtIndex:1]).comment) shouldEventually] equal:@"家の中にシカがいる。食べてもいいでしょうか？"];
         });
     });
 });
