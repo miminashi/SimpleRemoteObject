@@ -10,8 +10,18 @@
 
 @implementation RESTTag
 
-+ (NSString *)representResourceName {
-    return @"tags";
+//+ (NSString *)representResourceName {
+//    return @"tags";
+//}
+
++ (NSString *)representUrlForMany
+{
+    return @"tags.json";
+}
+
++ (NSString *)representUrlForOneWithRemoteID:(NSNumber *)remoteID
+{
+    return [NSString stringWithFormat:@"tags/%@.json", remoteID];
 }
 
 +(NSString *)resultKeyForMany{

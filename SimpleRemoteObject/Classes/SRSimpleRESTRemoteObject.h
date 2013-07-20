@@ -12,7 +12,17 @@ typedef void(^SRFetchObjectCompletionBlock)(id object, NSError *error);
 
 @interface SRSimpleRESTRemoteObject : SRSimpleRemoteObject
 
-+ (void)remoteObjectsAsync:(SRFetchCompletionBlock)completionBlock;
++ (void)remoteAllAsync:(SRFetchCompletionBlock)completionBlock;
 + (void)remoteObjectWithID:(NSNumber *)remoteID async:(SRFetchObjectCompletionBlock)completionBlock;
++ (void)remoteAllWithOptions:(NSDictionary *)options async:(SRFetchCompletionBlock)completionBlock;
++ (void)remoteObjectWithID:(NSNumber *)remoteID options:(NSDictionary *)options async:(SRFetchObjectCompletionBlock)completionBlock;
+
+/*
+ // should override on subclass
+ */
++(NSString *)representUrlForMany;
++(NSString *)representUrlForOneWithRemoteID:(NSNumber *)remoteID;
++(NSString *)resultKeyForMany;
++(NSString *)resultKeyForOne;
 
 @end
