@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7B3570EE-E0EB-46F0-B4C0-37C2BD38ED8C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SimpleRemoteObject</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F24DD6FE-759A-4B56-B34B-7D84E5866375</key>
+		<string>ssh://github.com/miminashi/SimpleRemoteObject.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SimpleRemoteObject/SimpleRemoteObject.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F24DD6FE-759A-4B56-B34B-7D84E5866375</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/miminashi/SimpleRemoteObject.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F24DD6FE-759A-4B56-B34B-7D84E5866375</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F24DD6FE-759A-4B56-B34B-7D84E5866375</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SimpleRemoteObject</string>
+		</dict>
+	</array>
+</dict>
+</plist>
